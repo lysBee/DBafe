@@ -1,0 +1,22 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "DatabaseConnectionTest",
+      "request": "launch",
+      "mainClass": "com.yspjt.dbafe.DatabaseConnectionTest",
+      "projectName": "dbafe"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-DbafeApplication<dbafe>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.yspjt.dbafe.DbafeApplication",
+      "projectName": "dbafe",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env",
+      "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=52169 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=dbafe"
+    }
+  ]
+}

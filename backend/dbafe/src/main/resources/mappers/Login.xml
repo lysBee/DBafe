@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tspjt.dbafe.Login">
+<select id="dbfLogin" parameterType="SigModel" resultType="SigModel">
+	SELECT *
+	FROM USER_DATA
+	WHERE user_id = #{user_id} AND user_pass = #{user_pass}
+</select>
+<select id="callUserCode" parameterType="SigModel" resultType="int">
+	SELECT user_code
+	FROM USER_DATA
+	WHERE user_id = #{user_id}
+</select>
+<select id="checkDuplicateId" parameterType="SigModel" resultType="int">
+	SELECT count(*)
+	from user_data
+	WHERE user_id = #{user_id}
+</select>
+    <insert id="joinUp1" parameterType="SigModel" >
+        insert into user_data(
+            USER_ID, USER_CODE, USER_PASS, USER_NAME, USER_GENDER, USER_DOB, 
+            USER_HEIGHT, USER_PHONE, USER_ADDRESS, USER_TELECOM_PROVIDER
+        )
+        values(
+            #{user_id}, #{user_code}, #{user_pass}, #{user_name}, #{user_gender}, 
+            #{user_dob}, #{user_height}, #{user_phone}, #{user_address}, #{user_telecom_provider}
+        )
+    </insert>
+    
+    <insert id="joinUp2" parameterType="SigModel" >
+        insert into user_data_sub(
+            USER_ID, USER_DATA_INSERT_DATE, USER_WEIGHT, USER_BMI, USER_STATE
+        )
+        values(
+            #{user_id}, sysdate, #{user_weight}, #{user_bmi}, 201
+        )
+    </insert>
+</mapper> 
